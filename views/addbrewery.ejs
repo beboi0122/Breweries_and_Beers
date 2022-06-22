@@ -1,0 +1,37 @@
+<%- include('header', {pagetitle: 'Breweries & Beers - Add Brewery'}) -%>
+<%- include('navbar') -%>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-auto">
+            <H1><%if(typeof brew === 'undefined'){ %>Add<%}else{%>Edit<%}%> Brewery</H1>
+        </div>
+    </div>
+    <br>
+    <form method="post">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-5">
+                <input type="hidden" name="id" value="<%= (typeof brew === 'undefined') ? '' : brew._id%>">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" class="form-control" id="name" name="name" placeholder="Name of the beer" value="<%= (typeof brew === 'undefined') ? '' : brew.name%>">
+                <br>
+                <label for="est" class="form-label">Year of establishment</label>
+                <input type="number" class="form-control" id="est" name="est" placeholder="Year of establishment" value="<%= (typeof brew === 'undefined') ? '' : brew.est%>">
+                <br>
+                <label for="founder" class="form-label">Founder</label>
+                <input type="text" class="form-control" id="founder" name="founder" placeholder="Name of the founder" value="<%= (typeof brew === 'undefined') ? '' : brew.founder%>">
+                <br>
+                <label for="loc" class="form-label">Location</label>
+                <input type="text" class="form-control" id="loc" name="loc" placeholder="Location of the brewery" value="<%= (typeof brew === 'undefined') ? '' : brew.loc%>">
+            </div>
+        </div>
+        <br>
+        <div class="row justify-content-center">
+            <div class="col-10 col-lg-3">
+                <div class="d-grid">
+                    <input type="submit" class="btn btn-primary" onclick="history.back()" value="Save">
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<%- include('footer') -%>

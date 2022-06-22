@@ -1,0 +1,89 @@
+Breweries & Beers
+    -index.html         -bejelentezési felület(egy szöveg és egy gomb a bejelntkezéshez)
+    -breweries.html     -táblázat(sörfődék nevei(kattintható -> edit), törlésgomb)), gomb új sörfőzde hozzáadásához
+    -addbrewery.html    -új söfőzde hozzáadása vagy szerkeztése(4 szöveg + egy gomb a mentéshez)
+    -brewery.html       -sörfőzde adatai + edite gomb, lista a sörfőzde söreiről(edit és delete gomb)
+    -addbeer.html       -sőr hozzáadása vagy szerkeztése(3 szöveg + sörfőzde kiválasztó + gomb a mentéshez)
+    -beers.html         -táblázat a sörökről(sörfődék nevei(kattintható -> edit), neve, típusa, alkoholszázalék + edit és delete gomb)
+
+Routing
+
+    middleware/
+        renderMW
+
+    middleware/auth/
+        checkPasswordMW
+        authMW
+        logoutMW
+
+    middleware/brewery/
+        getBreweriesMW
+        getBreweryMW
+        saveBreweryMW
+        deleteBreweryMW
+
+    middleware/beer/
+        getBeersMW
+        getBeerMW
+        saveBeerMW
+        deleteBeerMW
+
+
+
+
+    GET,POST /
+        checkPasswordMW
+        renderMW(index.html)
+
+    GET /logout
+        logoutMW
+
+    GET /brewerylist
+        authMW
+        getBreweriesMW
+        renderMW(breweries.html)
+
+    GET /brewery/show/:breweryid
+        authMW
+        getBreweryMW
+        getBeersMW
+        renderMW(brewery.html)
+
+    GET,POST /brewery/new
+        authMW
+        getBreweryMW
+        saveBreweryMW
+        renderMW(addbrewery.html)
+
+    GET,POST /brewery/edit/:breweryid
+        authMW
+        getBreweryMW
+        saveBreweryMW
+        renderMW(addbrewery.html)
+
+    GET /brewery/delete/:breweryid
+        authMW
+        getBreweryMW
+        deleteBreweryMW
+
+    GET /beerlist
+        authMW
+        getBeersMW
+        renderMW(beers.html)
+
+    GET,POST /beer/new
+        authMW
+        getBeerMW
+        saveBeerMW
+        renderMW(addbeer.html)
+
+    GET,POST /beer/edit/:beerid
+        authMW
+        getBeerMW
+        saveBeerMW
+        renderMW(addbeer.html)
+
+    GET /beer/delete/:beerid
+        authMW
+        getBeerMW
+        deleteBeerMW

@@ -1,0 +1,41 @@
+<%- include('header', {pagetitle: 'Breweries & Beers - Add Beer'}) -%>
+<%- include('navbar') -%>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-auto">
+            <H1><%if(typeof beer === 'undefined'){ %>Add<%}else{%>Edit<%}%> Beer</H1>
+        </div>
+    </div>
+    <br>
+    <form method="post">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-5">
+                <input type="hidden" name="id" value="<%= (typeof beer === 'undefined') ? '' : beer._id%>">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" class="form-control" id="name" name="beername" placeholder="Name of the beer" value="<%= (typeof beer === 'undefined') ? '' : beer.name%>">
+                <br>
+                <label for="type" class="form-label">Type</label>
+                <input type="text" class="form-control" id="type" name="type" placeholder="Type of the beer" value="<%= (typeof beer === 'undefined') ? '' : beer.type%>">
+                <br>
+                <label for="alc" class="form-label">Alcohol</label>
+                <input type="number" class="form-control" id="alc" name="alc" placeholder="Alcohol percentage" value="<%= (typeof beer === 'undefined') ? '' : beer.alc%>">
+                <br>
+                <label for="bwy" class="form-label">Brewery</label>
+                <select class="form-select" id="bwy" name="_producer" aria-label="Default select example">
+                    <% brews.forEach(function(brewery){ %>
+                    <option <%if(typeof beer !== 'undefined' && brewery._id.toString() === beer._producer.toString()){%> selected <%};%> value="<%=brewery._id%>"><%=brewery.name%></option>
+                    <% }); %>
+                </select>
+            </div>
+        </div>
+        <br>
+        <div class="row justify-content-center">
+            <div class="col-10 col-lg-3">
+                <div class="d-grid">
+                    <input type="submit" class="btn btn-primary" value="Save">
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<%- include('footer') -%>

@@ -1,0 +1,31 @@
+<%- include('header', {pagetitle: 'Breweries & Beers - LogIn'}) -%>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-auto">
+            <br>
+            <H1>Breweries & Beers</H1>
+            <% if(typeof error !== 'undefined'){ %>
+                <script> alert("<%= error %>") </script>
+            <%}%>
+        </div>
+    </div>
+    <br>
+    <form method="post">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-5">
+                <label for="pass" class="form-label">Password</label>
+                <input type="password" class="form-control" id="pass" name="pass" required placeholder="Enter your password">
+            </div>
+        </div>
+        <br><br>
+        <div class="row justify-content-center">
+            <div class="col-10 col-lg-3">
+                <div class="d-grid">
+                    <!--<a href="/brewerylist" class="btn btn-primary">Login</a>-->
+                    <input type="submit" value="Login" class="btn btn-primary">
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<%- include('footer') -%>

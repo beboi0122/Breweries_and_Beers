@@ -1,0 +1,48 @@
+<%- include('header', {pagetitle: 'Breweries & Beers - Beers'}) -%>
+<%- include('navbar') -%>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-auto">
+            <H1>Beers</H1>
+        </div>
+    </div>
+    <br>
+    <div class="row justify-content-center">
+        <div class="col-12">
+            <table style="vertical-align: middle" class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col">Brewery</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Type</th>
+                        <th scope="col">Alcohol</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% beers.forEach(function(beer){ %>
+                        <tr>
+                            <th scope="row"><a href="/brewery/show/<%=beer._producer%>"><%brews.forEach(function (brew){ if(brew._id.toString() === beer._producer.toString()){%><%=brew.name%><%}})%></a></th>
+                            <th scope="row"><%=beer.name%></th>
+                            <th scope="row"><%=beer.type%></th>
+                            <th scope="row"><%=beer.alc%>%</th>
+                            <td style="width:30px;white-space: nowrap">
+                                <a href="/beer/edit/<%=beer._id%>" class="btn btn-primary"><i class="far fa-edit"></i></a>
+                                <a href="/beer/delete/<%=beer._id%>" class="btn btn-danger"><i class="far fa-trash-alt"></i></a>
+                            </th>
+                        </tr>
+                    <% }); %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <br>
+    <div class="row justify-content-center">
+        <div class="col-10 col-lg-5">
+            <div class="d-grid">
+                <a href="/beer/new" class="btn btn-primary">Add Beer</a>
+            </div>
+        </div>
+    </div>
+</div>
+<%- include('footer') -%>
